@@ -8,9 +8,10 @@ import { createAuth0 } from '@auth0/auth0-vue';
 createApp(App).use(bootstrap).use(
     createAuth0({
         domain: "dev-oempr7he.eu.auth0.com",
-        clientId: "QpcDWLrMbkTGoif33wouk01DXaqbQfcA",
+        clientId: "noc9WVhpChShUB5upXEeEEXKxvJNmL8j",
         authorizationParams: {
-            redirect_uri: window.location.origin
+          redirect_uri: window.location.origin,
+          audience: "http://localhost:8080/~/api/",
         }
     })
 ).mount('#app')

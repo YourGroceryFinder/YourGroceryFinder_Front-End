@@ -46,10 +46,16 @@ export default {
         })
   },
   methods: {
-    GetAllResults(){
-      axios.post('~/api/scraper/GetProducts', this.productName)
+    async GetAllResults(){
+      const token = await this.$auth0.getAccessTokenSilently();
+console.log(token);
+          axios.post('~/api/search/GetProductsBySearch', this.productName, {
+            Headers: {
+              Authorization: 'Bearer ' + token
+            }
+          })
           .then(response =>{
-            this.products = response.data;
+              this.products = response.data;
           })
           .catch(error => {
             console.error(error);
